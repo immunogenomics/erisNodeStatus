@@ -21,11 +21,11 @@ CATEGORY_PRIORITY = {c: i for i, c in enumerate(CATEGORY_ORDER)}  # lower = wors
 
 def classify_state(state: str) -> str:
     s = state.lower().rstrip("*")
-    if s in ("drain", "drng", "down"):
+    if s in ("drain", "drained", "drng", "draining", "down"):
         return "nonfunctional"
-    if s in ("idle", "unk", "comp"):
+    if s in ("idle", "unk", "unknown", "comp", "completing"):
         return "suspicious"
-    if s in ("mix", "alloc"):
+    if s in ("mix", "mixed", "alloc", "allocated"):
         return "ok"
     return "unknown"
 
